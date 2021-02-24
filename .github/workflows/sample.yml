@@ -24,6 +24,6 @@ jobs:
       # xserver起動
       - name: xserver install and run
         run: |
-          sudo apt-get install xserver-xorg 
+          sudo apt-get install xserver-xorg xinit
           startx -d ${{ env.DISPLAY }}
       
