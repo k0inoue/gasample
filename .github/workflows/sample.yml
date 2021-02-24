@@ -24,5 +24,6 @@ jobs:
       # xserver起動
       - name: xserver install and run
         run: |
+          apt-get install xserver-xorg 
           startx -d ${{ env.DISPLAY }}
       
