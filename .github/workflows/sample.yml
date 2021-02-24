@@ -25,5 +25,6 @@ jobs:
       - name: xserver install and run
         run: |
           sudo apt-get install xserver-xorg xinit
+          xwininfo -tree -root
           startx -d ${{ env.DISPLAY }}
       
