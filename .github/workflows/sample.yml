@@ -1,0 +1,28 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+on:
+  # 指定ブランチで指定ファイルがPUSHされたときに実行する
+  push:
+  
+  workflow_dispatch:
+
+env:
+  DISPLAY: :99
+
+jobs:
+  sample:
+    runs-on: ubuntu-latest
+    steps:
+      # xvfbのインストールと起動
+      - name: Xvfb install and run
+        run: |
+          sudo apt-get install -y xvfb
+          Xvfb -ac ${{ env.DISPLAY }} -screen 0 1280x1024x24 >/dev/null 2>&1 &
+
+      # xserver起動
+      - name: xserver install and run
+        run: |
+          startx -d ${{ env.DISPLAY }}
+      
