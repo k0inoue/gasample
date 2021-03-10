@@ -16,15 +16,18 @@ jobs:
     steps:
       - name: set-step
         id: step1
-        run: echo "::set-output name=test_result::${{ github.event.inputs.result }}"
+        run: echo "::set-output name=test_input::${{ github.event.inputs.result }}"
       - name: out-step
         run: |
-          echo RESULT: ${{ steps.step1.outputs.test_result }}
-      - name: success-job
+          echo RESULT: ${{ steps.step1.outputs.test_input }}
+          exit ${{ steps.step1.outputs.test_input }} \
+            && echo "::set-output name=test_result::0" \
+            || echo "::set-output name=test_result::1"
+      - name: success-step
         if: steps.step1.outputs.test_result == 0
         run: |
           exit 0
-      - name: error-job
-        if: steps.step1.outputs.test_result == 1
+      - name: error-step
+        if: steps.step1.outputs.test_result != 0
         run: |
           exit 1
