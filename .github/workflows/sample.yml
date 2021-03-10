@@ -3,9 +3,6 @@
 name: CI
 
 on:
-  # 指定ブランチで指定ファイルがPUSHされたときに実行する
-  push:
-  
   workflow_dispatch:
     inputs:
       result:
@@ -23,3 +20,7 @@ jobs:
       - name: out-step
         run: |
           echo RESULT: ${{ steps.step1.outputs.test }}
+      - name: after-step
+        if: steps.step1.outputs.test == 0
+        run: |
+          echo RUN AFTER STEP
