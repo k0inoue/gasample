@@ -22,4 +22,4 @@ jobs:
         run: echo "::set-output name=test::${{ github.event.inputs.result }}"
       - name: out-step
         run: |
-          echo RESULT: ${{ steps.step1.outputs.test-result }}
+          echo RESULT: ${{ steps.step1.outputs.test }}
