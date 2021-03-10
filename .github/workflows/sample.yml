@@ -21,7 +21,7 @@ jobs:
         id: step2
         run: |
           echo RESULT: ${{ steps.step1.outputs.test_input }}
-          ( exit "${{ steps.step1.outputs.test_input }} ) \
+          ( exit ${{ steps.step1.outputs.test_input }} ) \
             && echo "::set-output name=test_result::0" \
             || echo "::set-output name=test_result::1"
       - name: success-step
