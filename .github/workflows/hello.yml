@@ -1,0 +1,32 @@
+# ワークフロー名(Webブラウザ上に表示される名前)
+name: Workflow Name
+
+# 実行トリガーイベントの指定
+on:
+  # GitHubへのプッシュイベント時
+  push:
+    # トリガ対象ブランチの指定
+    branches: [ main ]
+  # ブラウザからの手動実行可能にする
+  workflow_dispatch:
+
+# ワークフロー内で利用できる環境変数を定義
+env:
+  SAMPLE_NAME1: "Alice"
+  SAMPLE_NAME2: "Bod"
+
+# 実行する処理
+jobs:
+  Sample-Job:
+    name: Job Name
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Sample Step1
+        run: |
+          # 実行する処理を記載
+          echo "Hello World"
+      - name: Sample Step2
+        run: |
+          # 1つのステップで実行する処理は複数記載可能
+          echo "Hello ${{ env.SAMPLE_NAME1 }}"
+          echo "Hello ${{ env.SAMPLE_NAME2 }}"
