@@ -26,4 +26,4 @@ jobs:
         run: |
           # 1つのステップで実行する処理は複数記載可能
           date
-          curl -s wttr.in
+          curl 'wttr.in/osaka?lang=ja&1'
